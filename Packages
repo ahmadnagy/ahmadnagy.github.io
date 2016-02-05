@@ -1,4 +1,4 @@
-Package: com.ahmad.repoicon
+Package: com.ahmad.test
 Version: 0.1
 Architecture: iphoneos-arm
 Maintainer: AhmadNagy<ahmad.ios.tweaks@gmail.com>
@@ -9,7 +9,7 @@ MD5sum:
 SHA1: 
 SHA256: 
 Section: Main
-Description: AhmadNagy's Repo icons
+Description: This is a test package.....move on.
 Author: AhmadNagy<ahmad.ios.tweaks@gmail.com>
 Depiction: http://ahmadnagy.github.io/Depic/repoicons/index.html
-Name: AhmadNagy's repo icons
+Name: Test Package
