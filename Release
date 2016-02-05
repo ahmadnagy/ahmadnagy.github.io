@@ -1,0 +1,9 @@
+Origin: AhmadNagy's Repo
+Label: AhmadNagy's Repo
+Suite: stable
+Version: 1.0
+Codename: AhmadNagy
+Architecture: iphoneos-arm
+Components: main
+Descriptions: AhmadNagy's Repo
+MD5Sum:
