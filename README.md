@@ -1,4 +1,6 @@
-Welcome to AhmadNagy's Beta repo. 
+Ahmad Nagy's Beta repo. 
 
 Check out my work:
-  Reem for iPhone<https://twitter.com/kill4uonly>
+  <a href="http://cydia.saurik.com/package/com.macciti.reemforiphone/">Reem for iPhone</a>
+  <a href="http://cydia.saurik.com/package/com.macciti.shakeit/">ShakeIt</a>
+  <a href="http://cydia.saurik.com/package/com.macciti.shakeitplus/">ShakeIt Plus</a>
