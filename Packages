@@ -1,15 +1,15 @@
-Package: com.ahmad.test
-Version: 0.1
+Package: com.ahmad.allbyetweaksbeta
+Version: 1.2-1
 Architecture: iphoneos-arm
-Maintainer: AhmadNagy<ahmad.ios.tweaks@gmail.com>
+Maintainer: Ahmad Nagy <ahmad.ios.tweaks@gmail.com>
 Depends: 
 Filename: 
-Size:
+Size: 2900
 MD5sum:
 SHA1: 
 SHA256: 
-Section: Main
-Description: This is a test package.....move on.
-Author: AhmadNagy<ahmad.ios.tweaks@gmail.com>
-Depiction: http://ahmadnagy.github.io/Depic/repoicons/index.html
-Name: Test Package
+Section: Tweaks
+Description: AllByeTweaks
+Author: AhmadNagy <ahmad.ios.tweaks@gmail.com>
+Depiction: 
+Name: AllByeTweaks

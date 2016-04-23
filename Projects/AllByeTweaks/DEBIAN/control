@@ -1,0 +1,9 @@
+Package: com.ahmad.allbyetweaksbeta
+Name: Minimal Hosts Blocker
+Version: 1.2-1
+Architecture: iphoneos-arm
+Conflicts: com.ahmad.allbyetweaks
+Description: 
+Maintainer: Ahmad Nagy <ahmad.ios.tweaks@gmail.com>
+Author: Ahmad Nagy <ahmad.ios.tweaks@gmail.com>
+Section: Tweaks
