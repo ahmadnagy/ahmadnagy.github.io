@@ -1,0 +1,13 @@
+Package: com.lazynagy.ZOOPpro
+Name: ZOOP PRO
+Architecture: iphoneos-arm
+Description: Where Detail Meets Simplicity.
+Homepage: http://www.twitter.com/Lazynagy
+#Depiction: 
+Maintainer: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Author: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Section: Themes
+Depends: 
+#Conflicts:
+#Replaces:
+Version: 1.1
