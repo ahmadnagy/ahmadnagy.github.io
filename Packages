@@ -13,3 +13,19 @@ Description: AllByeTweaks
 Author: AhmadNagy <ahmad.ios.tweaks@gmail.com>
 Depiction: 
 Name: AllByeTweaks
+
+Package: com.ahmad.zoopprobeta
+Version: 1.5
+Architecture: iphoneos-arm
+Maintainer: Ahmad Nagy <ahmad.ios.tweaks@gmail.com>
+Depends: 
+Filename: 
+Size: 3893
+MD5sum:
+SHA1: 
+SHA256: 
+Section: Themes
+Description: Very cool theme
+Author: AhmadNagy <ahmad.ios.tweaks@gmail.com>
+Depiction: 
+Name: ZOOP Pro
