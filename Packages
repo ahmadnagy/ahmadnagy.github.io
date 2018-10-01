@@ -19,7 +19,7 @@ Version: 1.5
 Architecture: iphoneos-arm
 Maintainer: Ahmad Nagy <ahmad.ios.tweaks@gmail.com>
 Depends: 
-Filename: 
+Filename: ./debs/ZOOPpro.deb 
 Size: 3893
 MD5sum:
 SHA1: 
