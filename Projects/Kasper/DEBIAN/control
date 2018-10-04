@@ -3,11 +3,14 @@ Name: Kasper
 Architecture: iphoneos-arm
 Description: Simple White Glyphs
 Homepage: http://www.twitter.com/Lazynagy
-#Depiction: 
+#Depiction: http://ahmadnagy.github.io/depicKASPER.html
 Maintainer: LazyNagy <ahmad.ios.tweaks@gmail.com>
 Author: LazyNagy <ahmad.ios.tweaks@gmail.com>
 Section: Themes
 Depends: 
+Filename: ./debs/Kasper.deb 
+Size: 298008
+MD5sum: 032eed587ddc099746a1a2134ddf7718
 #Conflicts:
 #Replaces:
-Version: 1.01
+Version: 1.0
