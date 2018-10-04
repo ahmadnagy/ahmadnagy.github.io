@@ -24,24 +24,3 @@ body {
 
 border-color: #f4f4f4;
 }
-
-/* =============================================================
-   ABOUT STYLES
- ============================================================ */
-.developer-img {
-    border: 5px solid #4f4e4e;
-}
-
-
-
-.testimonial:after {
-    border-top-color: #4f4e4e;
-}
-
-.testimonial {
-    border: 1px solid #4f4e4e;
-}
-
-.testimonial-name {
-    color: #4f4e4e;
-}
