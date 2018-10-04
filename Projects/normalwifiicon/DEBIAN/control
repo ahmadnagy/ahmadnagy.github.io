@@ -1,0 +1,13 @@
+Package: com.ahmad.normalwifiiconGit
+Name: Normal Wifi Icon
+Depends: mobilesubstrate
+Version: 1.0
+Description: Shows WiFi Glyph when using Hotspot
+Homepage: http://www.twitter.com/Lazynagy
+#Depiction: http://ahmadnagy.github.io/depicNWI.html
+Maintainer: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Author: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Filename: ./debs/NormalWifiIcon.deb
+Size: 43942
+MD5sum: 6103703faf9b3aff8cad3939462b21a8
+Section: Tweaks
