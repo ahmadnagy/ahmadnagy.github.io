@@ -15,14 +15,14 @@
    GENERAL STYLES
  ============================================================ */
 body {
-    background-image:url(../../img/grey_wash_wall.png);
+    background-color: #f4f4f4;
 }
 /* =============================================================
    NAVBAR  STYLES
  ============================================================ */
 .navbar-inverse {
-background-color: #4f4e4e;
-border-color: #4f4e4e;
+
+border-color: #f4f4f4;
 }
 
 /* =============================================================
