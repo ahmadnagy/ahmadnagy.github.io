@@ -1,0 +1,13 @@
+Package: com.lazynagy.kasper
+Name: Kasper
+Architecture: iphoneos-arm
+Description: Simple White Glyphs
+Homepage: http://www.twitter.com/Lazynagy
+#Depiction: 
+Maintainer: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Author: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Section: Themes
+Depends: 
+#Conflicts:
+#Replaces:
+Version: 1.01
