@@ -1,9 +1,23 @@
-<center><font size="9">Ahmad Nagy's Beta repo.</font></center> 
 
-Check out my work:
+<style>
+
+.hd {
+  font-weight: bolder;
+  font-family: Arial; 
+
+}
+  
+
+
+
+
+</style>
+
+ <center><font size="12" class="hd">Ahmad Nagy's Github page</font></center> 
+
+
   <br>
-  <a href="http://cydia.saurik.com/package/com.macciti.reemforiphone/">Reem for iPhone</a>
+  <a href="https://ahmadnagy.github.io/index.html">Homepage</a>
   <br>
-  <a href="http://cydia.saurik.com/package/com.macciti.shakeit/">ShakeIt</a>
+  <a href="https://ahmadnagy.github.io/repo.html">Add my Repo</a>
   <br>
-  <a href="http://cydia.saurik.com/package/com.macciti.shakeitplus/">ShakeIt Plus</a>
