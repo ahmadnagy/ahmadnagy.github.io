@@ -1,6 +1,7 @@
- <center><font size="12" ><strong>Ahmad Nagy's Github page</strong> </font></center> 
+ <center><font size="16" ><strong>Ahmad Nagy's Github page</strong> </font></center> 
 
 
+  <br>
   <br>
   <a href="https://ahmadnagy.github.io/index.html">Homepage</a>
   <br>
