@@ -1,19 +1,4 @@
-
-<style>
-
-.hd {
-  font-weight: bolder;
-  font-family: Arial; 
-
-}
-  
-
-
-
-
-</style>
-
- <center><font size="12" class="hd">Ahmad Nagy's Github page</font></center> 
+ <center><font size="12" ><strong>Ahmad Nagy's Github page</strong> </font></center> 
 
 
   <br>
