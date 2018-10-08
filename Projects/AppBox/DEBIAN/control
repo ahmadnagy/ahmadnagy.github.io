@@ -1,0 +1,13 @@
+Package: com.lazynagy.AppBox
+Name: AppBox
+Architecture: iphoneos-arm
+Description: Widget looking app box
+Homepage: http://www.twitter.com/Lazynagy
+#Depiction: 
+Maintainer: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Author: LazyNagy <ahmad.ios.tweaks@gmail.com>
+Section: Widgets
+Depends: 
+#Conflicts:
+#Replaces:
+Version: 0.01
