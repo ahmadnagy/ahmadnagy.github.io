@@ -1,5 +1,5 @@
 Package: com.lazynagy.wthr
-Name: Wthr (BETA)
+Name: Wthr
 Architecture: iphoneos-arm
 Description: iOS weather widget, now on your HS.
 Homepage: http://www.twitter.com/Lazynagy
@@ -10,4 +10,4 @@ Section: Widgets
 Depends: 
 #Conflicts:
 #Replaces:
-Version: 0.011
+Version: 0.02
