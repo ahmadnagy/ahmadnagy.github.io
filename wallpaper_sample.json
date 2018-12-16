@@ -1,0 +1,20 @@
+{
+    "Categories": 
+        [
+            {
+                "name": "Blur"
+            }
+        ],
+    
+	"Wallpapers":
+        [
+			
+            {
+				"author": "Ahmad Nagy",
+				"url": "https://i.imgur.com/0sE3p7f.png",
+				"thumbUrl": "https://i.imgur.com/0sE3p7f.png",
+				"name": "Ahmad Nagy",
+                "category": "Blur"
+			}
+		]
+}
