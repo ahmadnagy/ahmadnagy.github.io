@@ -11,10 +11,17 @@
 			
             {
 				"author": "LazyNagy",
-				"url": "https://i.imgur.com/0sE3p7f.png",
-				"thumbUrl": "https://i.imgur.com/C7NLQma.png",
+				"url": "https://i.imgur.com/mYLvJ4R.png",
+				"thumbUrl": "https://i.imgur.com/Q1uYSjO.png",
 				"name": "Ahmad Nagy",
                 "category": "Blur"
-			}
-		]
+		},
+		{
+				"author": "LazyNagy",
+				"url": "https://i.imgur.com/cwejFIf.png",
+				"thumbUrl": "https://i.imgur.com/1qa0B0g.png",
+				"name": "Ahmad Nagy",
+                "category": "Blur"
+		}
+	 ]
 }
