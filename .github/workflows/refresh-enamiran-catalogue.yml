@@ -1,0 +1,90 @@
+name: Refresh Enamiran catalogue
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/refresh-enamiran-catalogue.yml'
+permissions: {}
+concurrency:
+  group: enamiran-catalogue-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Refresh all stores and verify durable records
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import { writeFileSync, appendFileSync } from 'node:fs';
+          const base = 'https://enamiran-uae.rubyrat64.chatgpt.site';
+          const startedAt = new Date().toISOString();
+          const reports = [];
+          const deadline = Date.now() + 50 * 60 * 1000;
+          async function read(path) {
+            const response = await fetch(base + path, { signal: AbortSignal.timeout(110000) });
+            if (!response.ok) throw new Error('Backend HTTP ' + response.status);
+            return response.json();
+          }
+          const stores = await read('/api/stores');
+          if (!Array.isArray(stores) || stores.length !== 31) throw new Error('Expected all 31 configured retailers');
+          let next = 0;
+          function persistReport() {
+            writeFileSync('catalogue-refresh-report.json', JSON.stringify({ startedAt, stores: reports }, null, 2));
+          }
+          async function worker() {
+            while (next < stores.length) {
+              const store = stores[next++];
+              const seen = new Set();
+              const report = { store: store.id, name: store.name, feedPages: 0, retrievedRecords: 0, freshRecordsVerified: 0, errors: [] };
+              for (const source of ['native', 'sitemap']) {
+                for (const gender of source === 'sitemap' ? ['Female'] : ['Female', 'Male']) {
+                  let cursor = '', page = 0;
+                  const fingerprints = new Set();
+                  while (Date.now() < deadline) {
+                    try {
+                      const data = await read('/api/catalogue-page?' + new URLSearchParams({ store: store.id, source, gender, page, cursor }));
+                      if (data.failed) { report.errors.push(source + ': ' + data.notice); break; }
+                      const fingerprint = data.pageKey || JSON.stringify((data.products || []).map(p => p.productURL));
+                      if (fingerprints.has(fingerprint)) break;
+                      fingerprints.add(fingerprint);
+                      report.feedPages++;
+                      for (const product of data.products || []) seen.add(product.productURL);
+                      if (!data.hasMore) break;
+                      cursor = data.nextURL || '';
+                      page++;
+                    } catch (error) { report.errors.push(source + ': ' + error.message); break; }
+                  }
+                  if (Date.now() >= deadline) report.errors.push('Time budget reached; earlier catalogue retained');
+                }
+              }
+              report.retrievedRecords = seen.size;
+              try {
+                for (const gender of ['Female', 'Male']) {
+                  const saved = await read('/api/backup-search?' + new URLSearchParams({ store: store.id, q: 'fashion', gender, page: 0 }));
+                  const fresh = (saved.products || []).filter(p => (p.retrievedAt || p.cachedAt || 0) >= Date.parse(startedAt));
+                  report.freshRecordsVerified += fresh.length;
+                  report.savedCatalogueAvailable = Boolean(report.savedCatalogueAvailable || saved.products?.length);
+                }
+              } catch (error) { report.errors.push('Persistence verification: ' + error.message); }
+              report.status = report.freshRecordsVerified ? (report.errors.length ? 'partial refresh verified' : 'accessible pages refreshed and verified') : 'no fresh records verified; earlier catalogue retained';
+              report.completedAt = new Date().toISOString();
+              reports.push(report);
+              persistReport();
+              console.log(JSON.stringify(report));
+            }
+          }
+          await Promise.all(Array.from({ length: 3 }, worker));
+          const status = await read('/api/catalogue-status');
+          if (!status.durableStorage) throw new Error('Durable catalogue storage unavailable');
+          const verified = reports.filter(r => r.freshRecordsVerified > 0);
+          const summary = ['# Enamiran catalogue refresh', '', 'Started: ' + startedAt, '', verified.length + '/31 stores had fresh saved records verified. Coverage may be partial.', '', '| Store | Result | Records retrieved | Errors |', '| --- | --- | ---: | --- |', ...reports.map(r => '| ' + r.name + ' | ' + r.status + ' | ' + r.retrievedRecords + ' | ' + r.errors.join('; ').replaceAll('|', '/') + ' |'), '', 'No individual availability rechecks. Existing records are retained after failures.'].join('\n');
+          if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+          console.log(summary);
+          if (!verified.length) process.exitCode = 1;
+          
+          NODE
