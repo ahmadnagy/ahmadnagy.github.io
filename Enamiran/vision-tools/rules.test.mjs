@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{visualCategoryMatches,verdict}from'./rules.mjs';
+const p={productURL:'https://shop.test/bag',imageURLs:['https://img.test/1.jpg']};
+const index=row=>({items:{[p.productURL]:row}});
+test('rejects only a confident unrelated photo with identical image URL',()=>{const row=verdict({Shoes:.96,Bags:.01,Other:.03},p.imageURLs[0]);assert.equal(visualCategoryMatches(p,'Bags',index(row)),false);assert.equal(visualCategoryMatches(p,'Shoes',index(row)),true);assert.equal(visualCategoryMatches({...p,imageURLs:['https://img.test/2.jpg']},'Bags',index(row)),true);});
+test('uncertain, missing and malformed verdicts keep valid listings',()=>{for(const row of [undefined,{score:.99,margin:.9},verdict({Bags:.35,Shoes:.65},p.imageURLs[0])])assert.equal(visualCategoryMatches(p,'Bags',index(row)),true);});
+test('related clothing and bikini/swimwear categories are retained',()=>{const row=verdict({Activewear:.99,Pants:.001},p.imageURLs[0]);assert.equal(visualCategoryMatches(p,'Pants',index(row)),true);assert.equal(visualCategoryMatches(p,'Bikinis',index(verdict({Swimwear:.99,Other:.01},p.imageURLs[0]))),true);assert.equal(visualCategoryMatches(p,'All',index(row)),true);});

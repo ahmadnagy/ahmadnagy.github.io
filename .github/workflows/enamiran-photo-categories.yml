@@ -1,0 +1,46 @@
+name: Classify Enamiran product photos
+on:
+  schedule:
+    - cron: '43 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/enamiran-photo-categories.yml'
+      - 'Enamiran/vision-tools/**'
+permissions:
+  contents: write
+concurrency:
+  group: enamiran-photo-categories
+  cancel-in-progress: false
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/cache@v4
+        with:
+          path: .cache/enamiran-clip
+          key: enamiran-clip-q8-v1
+      - name: Install free local classifier
+        run: npm install --prefix Enamiran/vision-tools --no-audit --no-fund
+      - name: Verify filtering rules
+        run: node --test Enamiran/vision-tools/rules.test.mjs
+      - name: Scan new catalogue photos
+        run: node Enamiran/vision-tools/classify.mjs
+      - name: Save completed photo verdicts
+        if: always()
+        shell: bash
+        run: |
+          if [ ! -f Enamiran/visual-categories.json ]; then exit 0; fi
+          git config user.name 'Enamiran catalogue bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Enamiran/visual-categories.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Update cached product photo categories [skip ci]'
+          git pull --rebase origin master
+          git push origin HEAD:master
